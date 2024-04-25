@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Calculator
+{% endblock %}
+{% block body %}
+	<main class="container">
+		<div>
+			<label class="label" for="component-name">
+				Enter numbers to calculate
+			</label>
+			<form method="get" action="{{ path('calculator') }}">
+				<input type="text" name="num1" class="input" placeholder="num1" id="your-name" autocomplete="off"/>
+				<input type="text" name="num2" class="input" placeholder="num2" id="your-name" autocomplete="off"/>
+                <select name="operators">
+                    <option value="addition">+</option>
+                    <option value="subtraction">-</option>
+                    <option value="multiplication">*</option>
+                    <option value="division">/</option>
+                </select>
+                <input type="submit" value="CALCULATE">
+			</form>
+		</div>
+
+		{% if result is not null %}
+			{# <h2>Calculate:</h2> #}
+			{# <p>{{ num1 }} {{ operator }} {{ num2 }} = {{ result }}</p> #}
+			<p>Result = {{ result|round(2) }}</p>
+		{% endif %}
+	</main>
+{% endblock %}
